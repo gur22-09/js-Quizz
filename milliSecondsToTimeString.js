@@ -1,4 +1,10 @@
 
+
+//   *
+//     param {
+//       milliSeconds: number  
+//     }
+//   *
 function milliSecodnsToTimeString(milliSeconds) {
   const hours = Math.floor(milliSeconds / 60 * 60 * 1000).toString().padStart(2, '0');
   // minutes is whats left of milliseconds without hours
