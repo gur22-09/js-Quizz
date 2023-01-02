@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Multi-Image Carousel Example</title>
+    <style>
+      #carousel {
+        width: 800px;
+        height: 400px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      #carousel img {
+        width: 200px;
+        height: 400px;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="carousel">
+      <img src="image1.jpg" />
+      <img src="image2.jpg" />
+      <img src="image3.jpg" />
+      <img src="image4.jpg" />
+      <img src="image5.jpg" />
+      <img src="image6.jpg" />
+    </div>
+    <button id="prev-btn">Prev</button>
+    <button id="next-btn">Next</button>
+
+    <script>
+      const carousel = document.getElementById("carousel");
+      const prevBtn = document.getElementById("prev-btn");
+      const nextBtn = document.getElementById("next-btn");
+      let currentPos = 0;
+      let numVisible = 3;
+
+      function next() {
+        currentPos = Math.min(
+          currentPos + numVisible,
+          carousel.childNodes.length - numVisible
+        );
+        updateCarousel();
+      }
+
+      function prev() {
+        currentPos = Math.max(currentPos - numVisible, 0);
+        updateCarousel();
+      }
+
+      function updateCarousel() {
+        carousel.style.left = -currentPos * 200 + "px";
+      }
+
+      nextBtn.onclick = function () {
+        next();
+      };
+
+      prevBtn.onclick = function () {
+        prev();
+      };
+    </script>
+  </body>
+</html>
