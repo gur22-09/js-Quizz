@@ -12,18 +12,18 @@
 
 
 
-function mapValuesToPath(obj, parentKey = '') { 
-  let result = { };
-  
-  for(let [key, value] of Object.entries(obj) { 
-    const path = parentKey ? `${parentKey}.{key}` : 
-    if(typeof value !== "object" && !Array.isArray(value)) {
+function mapValuesToPath(obj, parentKey = '') {
+  let result = {};
+
+  for (let [key, value] of Object.entries(obj)) {
+    const path = parentKey ? `${parentKey}.${key}` : key;
+    if (typeof value !== "object" && !Array.isArray(value)) {
       result[path] = value;
-    }else {
-     result = { ...result, ...mapValuesToPath(value, path) }
+    } else {
+      result = { ...result, ...mapValuesToPath(value, path) }
     }
-  
-  } 
-  
+
+  }
+
   return result;
 }
